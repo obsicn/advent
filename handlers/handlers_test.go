@@ -7,7 +7,7 @@ import (
 )
 
 func TestRouter(t *testing.T) {
-	r := Router()
+	r := Router("", "", "")
 	ts := httptest.NewServer(r)
 	defer ts.Close()
 
@@ -17,7 +17,7 @@ func TestRouter(t *testing.T) {
 	}
 
 	if res.StatusCode != http.StatusOK {
-		t.Errorf("Status code for /home is wrong. Have:%d, want:%d",
+		t.Errorf("Status code  for /home is wrong. Have:%d, want:%d",
 			res.StatusCode, http.StatusOK)
 	}
 	res, err = http.Post(ts.URL+"/home", "text/plain", nil)
